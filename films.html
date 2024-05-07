@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about film</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+            color: white;
+            flex-direction: column; /* Center items vertically */
+        }
+        
+        .movie-details {
+            text-align: center;
+            margin-top: 20px; /* Add some space between the image and details */
+        }
+        
+        .movie-details img {
+            width: 400px;
+            max-height: 400px; 
+            margin-bottom: 20px; 
+        }
+
+        /* Style for movie details */
+        .detail-item {
+            margin-bottom: 10px; /* Add space between each detail */
+            font-size: 20px;
+        }
+        #title{
+            color: greenyellow;
+        }
+        #rating{
+            color: darkorange;
+        }
+        #genre{
+            color:brown;
+        }
+        #rank{
+            color:dodgerblue;
+        }
+        #year{
+            color:lightcoral;
+        }
+        h1{
+            color:gold;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Movie Details</h1>
+
+    <div class="movie-details">
+        <img src="" alt="Movie Image">
+        <div class="detail-item" id="title"></div><hr>
+        <div class="detail-item" id="rating"></div><hr>
+        <div class="detail-item" id="genre"></div><hr>
+        <div class="detail-item" id="rank"></div><hr>
+        <div class="detail-item" id="year"></div><hr>
+    </div>
+
+    <script>
+        function showData() {
+            let movie = JSON.parse(localStorage.getItem("movie"));
+
+            if (movie) {
+                document.querySelector(".movie-details img").src = movie.image;
+                document.getElementById("title").innerHTML = `<b>Title:</b> ${movie.title}`;
+                document.getElementById("rating").innerHTML = `<b>Rating:</b> ${movie.rating}`;
+                document.getElementById("genre").innerHTML = `<b>Genre:</b> ${movie.genre}`;
+                document.getElementById("rank").innerHTML = `<b>Rank:</b> ${movie.rank}`;
+                document.getElementById("year").innerHTML = `<b>Year:</b> ${movie.year}`;
+            } else {
+                document.body.innerHTML = "<p>No movie data found.</p>";
+            }
+        }
+    
+        window.addEventListener("DOMContentLoaded", showData);
+    </script>
+</body>
+</html>
